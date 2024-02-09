@@ -1,0 +1,56 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 3em;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: darkviolet;
+  color: black;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+}
+
+.wallet-button,
+.info-section {
+  margin-top: 20px;
+}
+
+.info-section {
+  display: none;
+  text-align: left;
+}
+
+.info-section.active {
+  display: block;
+}
+
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

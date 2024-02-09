@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"path": "../../../Prototyp-Project"
+		},
+		{
+			"path": "../../../Coding_Testt"
+		},
+		{
+			"path": "../../../Tutorial"
+		},
+		{
+			"path": "../../../HTest"
+		},
+		{
+			"path": "../../../Youmetamask"
+		},
+		{
+			"path": "../../../metamask_connect"
+		},
+		{
+			"path": "../../../Super"
+		},
+		{
+			"path": "../../../raus"
+		},
+		{
+			"path": "../../../AApp"
+		},
+		{
+			"path": "../../../APPPP"
+		},
+		{
+			"path": "../../../Projektco3"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"solidity.compileUsingRemoteVersion": "v0.8.20+commit.a1b79de6",
+		"liveServer.settings.multiRootWorkspaceName": "Super"
+	}
+}
