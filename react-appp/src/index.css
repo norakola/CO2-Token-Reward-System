@@ -5,7 +5,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
 
-  background-color: black;
+  background-color: rgb(203, 184, 150);
   color: white;
   text-align: center;
   margin: 0;
@@ -17,17 +17,18 @@ body {
 
 .title {
   font-size: 3em;
-  color: white;
+  color: rgb(34, 33, 33);
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 button {
-  background-color: darkviolet;
-  color: black;
+  background-color: rgb(143, 123, 89);
+  color: rgb(23, 22, 22);
   padding: 10px 20px;
   margin: 10px;
-  border: none;
+  border: rgb(21, 20, 20);
+  font-weight: 550;
 }
 
 .wallet-button,

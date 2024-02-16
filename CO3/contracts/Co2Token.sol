@@ -4,11 +4,12 @@
 pragma solidity ^0.8.19; // In my visual studio code, only this works with this version
 
 
+//import "node_mo/@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
-//import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+//import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract Co2Token is ERC20 {
+contract Co2Token is ERC20  {
 
   
 
@@ -102,16 +103,21 @@ contract Co2Token is ERC20 {
 }
 
 
+function rewardd () public payable {
+
+     uint256  eingabe = 10;
+     _mint(msg.sender  , eingabe * ( 10 ** decimals()));
+}
 
 // Function for reading out the current avargecost, so the user knows 
- function getCurrentAverageCosts(address user) public view returns (uint256) {
+ function getCurrentAverageCosts(address user) public view returns (uint) {
         return averageCosts[user] / (1 ether);
  }
 
 
 
 // Function for reading out the current (total) EnergyCosts, so the user knows 
- function getEnergyCosts(address user) public view returns (uint256) {
+ function getEnergyCosts(address user) public view returns (uint) {
         return totalCosts[user] / (1 ether);
  }
 
