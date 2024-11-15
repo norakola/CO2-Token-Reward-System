@@ -15,20 +15,18 @@ Frontend Application: A React.js app that connects to the smart contract and dis
 
 
 # Project Structure
-CO2-Token-Reward-Sytsem/
+
+|CO2-Token-Reward-Sytsem/
    |-CO2/
       |--contracs/
          |--- CO2Token.sol         # The ERC-20 Smart Contract for the CO2 token
-         
       |--scripts/
          |---deploy.js             # Deploying the Smart Contract Address   
          |---hardhat.config.js     # Node Provider
-         
       |--artifacts/   
          |--contracts/ 
            |---CO2Token.json       # ABI (defines the methods to interact with the smart 
-                                    contract, both frontend and backend.)
-           
+                                    contract, both frontend and backend.)    
    |-react-app /
       |--src/
          |---App.js                # The React app that connects the smart contract to the 
