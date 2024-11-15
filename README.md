@@ -58,7 +58,7 @@ Frontend Interactions: Users can input their energy data, view whether they’re
 Solidity: Smart contract language used to develop the CO2 token.
 Ethereum: Blockchain platform for deploying the smart contract.
 React.js & JavaScript: Frontend framework for building the web application.
-Web3.js: Library to interact with the Ethereum blockchain from the frontend.
-MetaMask: Browser extension that allows users to interact with the Ethereum network.
-Alchemy : Connects the app to the Ethereum Sepolia testnet via the ALCHEMY_SEPOLIA_ENDPOINT.
+Web3.js & ethers.js: Library to interact with the Ethereum blockchain from the frontend.
+MetaMask: Browser extension that allows users to interact with the Ethereum network via their wallet.
+Alchemy : Connects the app to the Ethereum Sepolia testnet via the ALCHEMY_SEPOLIA_ENDPOINT, a node.
 
