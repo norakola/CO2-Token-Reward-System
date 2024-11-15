@@ -13,10 +13,9 @@ Real-Time CO2 Tracking: Users can track their CO2 emissions and energy consumpti
 Smart Contract: Written in Solidity, the contract manages the CO2 token operations.
 Frontend Application: A React.js app that connects to the smart contract and displays the user data, including the current energy consumption, CO2 emissions, and CO2 token balance.
 
-# Project Structure
-bash
 
-CO2_Token_Reward_Sytsem/
+# Project Structure
+CO2-Token-Reward-Sytsem/
    |-CO2/
       |--contracs/
          |--- CO2Token.sol         # The ERC-20 Smart Contract for the CO2 token
