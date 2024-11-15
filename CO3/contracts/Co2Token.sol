@@ -1,39 +1,27 @@
 // contracts/Co2Token.sol
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.19; // In my visual studio code, only this works with this version
-
-
-//import "node_mo/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+pragma solidity ^0.8.19; 
 import "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
-//import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract Co2Token is ERC20  {
 
-  
-
+contract CO2Token is ERC20  {
+    
     mapping(address => uint256) private lastUpdateTime;
     mapping(address => uint256) private totalCosts;
     mapping(address => uint256) private numberOfEntries;
     mapping(address => uint256) private averageCosts;
     
 
-    uint256 constant initialReward = 100; // Initial reward of 100 tokens (First entry begins with an 100 token reward)
-    uint256 public updateInterval = 5 seconds; // In the real case 1 month
-    uint256  _costs; // Electricity costs entered by the user
+    uint256 constant initialReward = 100; 
+    uint256 public updateInterval = 5 seconds; 
+    uint256  _costs; 
 
-    //Require these real variables, for the conversion of electricity costs into co2 emissions in Germany:
-    uint constant CO2_PER_KWH = 434; // in Gramm
-    uint constant PRICE_PER_KWH = 42; // in Cent (42,29Cent, man könte es Skalieren)
+    uint constant CO2_PER_KWH = 354; // in Gramm
+   
 
-
-
-    constructor() ERC20("Co2Token", "Co2") {
-             
-             
-    }
-
+    constructor() ERC20("CO2Token", "CO2") {}
 
     
     // Explanaition of the function reportEnergyCosts(uint256 _userInputCosts ){}:
@@ -44,7 +32,7 @@ contract Co2Token is ERC20  {
     // With the first entry, the user receives 100 tokens as a gift.
     // The percentage of improvement of the average value is then paid out in tokens (10% improvement -> 10 token reward (mybe we make it 100)
     // From a 20% degradation, the user will be burned the same amount of tokens (30% degradation -> 30 token burn from his account)
-    // If the user manages to keep his average the same for the next entry, he receives 10 token as a reward
+    // If the user manages to keep his average the same for the next entry, he receives 1 token as a reward
 
     function reportEnergyCosts(uint256 _userInputCosts ) public payable  {
     _costs = _userInputCosts * ( 10 ** decimals()); // Scales the input to Wei units
@@ -52,7 +40,6 @@ contract Co2Token is ERC20  {
 
     uint256 reward = 0;
     uint256 previousAverage; // Declaration of the variable previousAverage
-
 
     if (numberOfEntries[msg.sender] > 0) {
         previousAverage = averageCosts[msg.sender]; 
@@ -66,7 +53,7 @@ contract Co2Token is ERC20  {
         }
 
         else if (averageCosts[msg.sender] == previousAverage) {
-            reward = 10; // 10 tokens reward for holding the average value
+            reward = 1; // 10 tokens reward for holding the average value
         }
         else  if (averageCosts[msg.sender] > previousAverage) { // this is the "oken burn" if statement
             uint256 percentageIncrease = uint256((averageCosts[msg.sender] - previousAverage) * 100) / (previousAverage);
@@ -100,20 +87,14 @@ contract Co2Token is ERC20  {
 
     lastUpdateTime[msg.sender] = block.timestamp;
 
+
 }
 
-
-function rewardd () public payable {
-
-     uint256  eingabe = 10;
-     _mint(msg.sender  , eingabe * ( 10 ** decimals()));
-}
 
 // Function for reading out the current avargecost, so the user knows 
  function getCurrentAverageCosts(address user) public view returns (uint) {
-        return averageCosts[user] / (1 ether);
+        return (averageCosts[user] / (1 ether));
  }
-
 
 
 // Function for reading out the current (total) EnergyCosts, so the user knows 
@@ -121,23 +102,32 @@ function rewardd () public payable {
         return totalCosts[user] / (1 ether);
  }
 
-
-// Function for reading out the current Co2Emission in Gramm, so the user knows 
- function EmissionsInGramm() public view returns (uint) {
-    uint verbrauchteKWh = (_costs * 100) / PRICE_PER_KWH;
-    uint co2Emissionen = verbrauchteKWh * CO2_PER_KWH;
-    return co2Emissionen / (1 ether); // Result in grams  
- }
-
-
-// Function for reading out the current Co2Emission in Kilogramm, so the user knows 
- function EmissionsInKilogramm() public view returns (uint) {
-    uint co2EmissionenGramm = EmissionsInGramm();
-    uint co2EmissionenKg = co2EmissionenGramm / 1000;
-    return co2EmissionenKg ; // Result in kilograms
- } 
+// Funktion zum Auslesen der GESAMTEN CO2-Emissionen in kg
+function EmissionTotal(address user) public view returns (uint) {
+    uint verbrauchteKWh = totalCosts[user] / 1 ether; // Umrechnung von Wei zu echten kWh
+    uint Totalco2Emissionen = (verbrauchteKWh * 354) / 1000; // Berechnung der CO2-Emissionen in Kilogramm
+    return Totalco2Emissionen; // Direkte Rückgabe in Kilogramm
+}
 
 
+
+// Funktion zum Auslesen der aktuellen CO2-Emission in Gramm
+function EmissionsInGramm() public view returns (uint) {
+    uint verbrauchteKWh = _costs / 1 ether; // Umrechnung von Wei zu echten kWh
+    uint co2Emissionen = verbrauchteKWh * 354; // Multiplikation mit Emissionsfaktor
+    return co2Emissionen; // Rückgabe der CO2-Emissionen in Gramm
+}
+
+// Funktion zum Auslesen der aktuellen CO2-Emission in Kilogramm
+function EmissionsInKilogramm() public view returns (uint) {
+    uint co2EmissionenGramm = EmissionsInGramm(); // Ruft die CO2-Emission in Gramm ab
+    uint co2EmissionenKg = co2EmissionenGramm / 1000; // Umrechnung von Gramm zu Kilogramm
+    return co2EmissionenKg; // Rückgabe der CO2-Emissionen in Kilogramm
+}
+
+function getBalance(address user) public view returns (uint256) {
+    return balanceOf(user);
+}
 
 }
 
