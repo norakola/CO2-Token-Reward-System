@@ -19,6 +19,7 @@ Frontend Application: A React.js app that connects to the smart contract and dis
 CO2-Token-Reward-Sytsem/
 
    |-CO2/
+   
       |--contracs/
          |--- CO2Token.sol         # The ERC-20 Smart Contract for the CO2 token
          
