@@ -15,6 +15,7 @@ Frontend Application: A React.js app that connects to the smart contract and dis
 
 # Project Structure
 bash
+
 CO2_Token_Reward_Sytsem/
    |-CO2/
       |--contracs/
